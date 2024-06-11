@@ -25,12 +25,13 @@ $ cd firstapp
 # 리액트 앱 시작
 $ yarn start
 ```
-### :+1: Google 공식문서
+### :+1: Google 공식문서 활용 자습하기
 - 참고링크: [React로 대화형 틱택토 구현하기](https://reactjs-kr.firebaseapp.com/tutorial/tutorial.html)
 ```bash
 # React app 설치
 $ npm install -g create-react-app
 $ create-react-app firstapp
+$ npm start
 # 코드 초기화
 $ cd my-app
 $ rm -f src/*
