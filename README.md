@@ -1,7 +1,7 @@
 # :memo:Address0의 React 공부공간
 ### 2024-06-11 ~
 ## 목차
-[1일차: React 정의 및 설치](#1일차-react-정의-및-설치)
+[1일차: React 정의 및 설치](#1일차-react-정의-및-설치)  
 [2일차: DOM 작성](#2일차-dom-작성)
   - [컴포넌트](#컴포넌트)
   - [스타일 추가: `className`으로 css class지정](#스타일-추가-classname으로-css-class지정)
