@@ -82,3 +82,58 @@ function MyButton() {
   border-radius: 50px;
 }
 ```
+### 함수 정의
+- `function Name() {}` 사용하여 함수 정의
+- `export default`로 함수 내보내기
+- **컴포넌트 안에 다른 컴포넌트 정의 불가** :arrow_forward: 최상위 레벨에서 컴포넌트 정의
+```js
+function Hello () {
+  return (
+    <div>
+      <button>Click!</button>
+    </div>
+  )
+};
+export default Hello;  // 컴포넌트 사용가능
+```
+### import/export
+- Default export 방식: 특정 파일에서 기본적으로 export하는 컴포넌트 사용
+- Name export방식: 파일 내 특정 컴포넌트 사용
+```js
+// App.js
+import Hello from './Hello';  // Default import
+import { Goodbye } from './Hello';  // Name import
+
+function App() {
+  return (
+    <div>
+      <Hello />
+      <Goodbye />
+    </div>
+  );
+}
+
+export default App;
+// Hello.js
+function hello() {
+  const click = function (event) {
+    alert('Hello, world!')
+  }
+
+  return (
+    <button onClick={click}>click me!</button>
+  )
+}
+
+export function Goodbye () {
+  const click = function (event) {
+    alert('Goodbye, world!')
+  }
+
+  return (
+    <button onClick={click}>Don't click me!!</button>
+  )
+}  // Name export
+
+export default hello;  // Default export
+```
