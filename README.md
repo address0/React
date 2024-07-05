@@ -16,17 +16,16 @@
 명령어 및 설치 과정
 1. `node.js` 및 npm 설치
 - [Node.js](https://nodejs.org/en/) :arrow_forward: 해당 링크에서 LTS 설치 시 npm 함께 설치
-2. `yarn` 설치
+2. `react-app` 설치
 ```bash
-$ npm install --global yarn
+$ npx create-react-app my-app
 ```
-3. CRA(Create-React-App)
+3. 리액트 앱 시작
 ```bash
-$ npx create-next-app@latest
-# 리액트 앱 생성한 폴더로 이동
-$ cd firstapp
-# 리액트 앱 시작
-$ npm run dev
+$ cd my-app
+$ npm start
+# 코드 초기화
+$ rm -f src/*
 ```
 ### :+1: Google 공식문서 활용 자습하기
 - 참고링크: [React로 대화형 틱택토 구현하기](https://reactjs-kr.firebaseapp.com/tutorial/tutorial.html)
