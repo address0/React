@@ -4,3 +4,9 @@
 .avatar {
   border-radius: 100%;
 }
+.background-grey {
+  background-color: grey;
+}
+.card {
+  border: 1px black solid;
+}

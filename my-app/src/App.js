@@ -1,6 +1,8 @@
 import './App.css';
 import Hello from './Hello';
 import { Goodbye } from './Hello';
+import {Avatar, Card} from './Profile';
+import Profile from './Profile';
 
 function App() {
   const avatar = 'https://i.imgur.com/7vQD0fPs.jpg'
@@ -41,6 +43,27 @@ function App() {
       alt={description}
       />
       <h3 style={person.theme}>Hi, my name is {person.name}!</h3>
+      <Avatar 
+        size={100}
+        person={{
+          name: 'Lin Lanying',
+          imageId: '1bX5QH6'
+        }}/>
+      <Profile
+        size={100}
+        person={{
+          name: 'Lin Lanying',
+          imageId: '1bX5QH6'
+        }}
+      />
+      <Card>
+        <Avatar
+          size={100}
+          person={{
+            name: 'Lin Lanying',
+            imageId: '1bX5QH6'
+          }}/>
+      </Card>
     </div>
   );
 }
