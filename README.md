@@ -8,6 +8,7 @@
   - [함수 정의](#함수-정의)
   - [export와 import](#importexport)
   - [JSX 정리](#jsx)
+  - [Props](#props)
 ## 1일차: React 정의 및 설치
 ### :mag_right:React란?
 **페이스북에서 개발한 오픈소스 라이브러리**  
@@ -204,3 +205,84 @@ const person = {
     }
 }
 ```
+## Props
+- props: 부모-자식 간 정보 통신 수단
+- 부모 컴포넌트: props 전달 / 자식 컴포넌트: props read
+- 자식 컴포넌트 지정 시, 인자 기본값 설정 가능(`props={undefined}`으로 전달될 때만 사용)
+- props 속성명과 자식 컴포넌트 속성명이 일치할 시 spread(`{...props}`) 사용가능
+```js
+function Avatar({ person, size = 100 }) {    // 원래 props만 인자로 받지만, 구조분해 할당으로 상속받음. size 기본값: 100
+  return (
+    <img
+      className="avatar"
+      src={getImageUrl(person)}
+      alt={person.name}
+      width={size}
+      height={size}
+    />
+  );
+}
+// 원래 상속되는 모습
+function Avatar(props) {
+  let person = props.person;
+  let size = props.size;
+  // ...
+}
+
+function Profile(props) {   // spread 문법
+  return (
+    <div className="card">
+      <Avatar {...props} />
+    </div>
+  );
+}
+
+export default function Profile() {
+  return (
+    <div>
+      <Avatar
+        size={100}
+        person={{ 
+          name: 'Katsuko Saruhashi', 
+          imageId: 'YfeOqp2'
+        }}
+      />
+      <Profile 
+        size={200}
+        person={{ 
+          name: 'Katsuko Saruhashi', 
+          imageId: 'YfeOqp2'
+        }}
+      />
+    </div>
+  );
+}
+```
+### Props: Component 중첩
+- `{children}` prop을 통해 JSX 태그 내 컨텐츠 중첩 가능
+```js
+function Card({children}) {
+  return (
+    <div className="card">
+      {children}   {/* 부모 컴포넌트에서 임의로 채우는 구멍을 만드는 늑김.. */}
+    </div>
+  )
+}
+
+export default function Profile() {
+  return (
+    <Card>
+      <Avatar
+        size={100}
+        person={{ 
+          name: 'Katsuko Saruhashi',
+          imageId: 'YfeOqp2'
+        }}
+       />
+    </Card>
+  )
+}
+```
+![alt text](readme_photos/children.png)
+- props는 페이지 렌더링마다 새로운 버전의 props 전달받음
+- props 데이터가 사용자와 상호작용할 경우, **props 자체 변경이 아닌 state를 설정해야 한다.**
