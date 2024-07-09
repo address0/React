@@ -9,7 +9,7 @@
   - [export와 import](#importexport)
   - [JSX 정리](#jsx)
   - [Props](#props)
-## 1일차: React 정의 및 설치
+## 1. React 정의 및 설치
 ### :mag_right:React란?
 **페이스북에서 개발한 오픈소스 라이브러리**  
 - 사용자 인터페이스(UI) 구축에 사용
@@ -42,7 +42,7 @@ $ npm start
 $ cd my-app
 $ rm -f src/*
 ```
-## 2일차: DOM 작성
+## 2. DOM 작성
 * 비고: npm업데이트 문제로 해결을 위해 npm cache app 설치됨
 ### 컴포넌트
 - JSX 문법으로 작성(Javascript + return(HTML))
@@ -205,7 +205,7 @@ const person = {
     }
 }
 ```
-## Props
+### Props
 - props: 부모-자식 간 정보 통신 수단
 - 부모 컴포넌트: props 전달 / 자식 컴포넌트: props read
 - 자식 컴포넌트 지정 시, 인자 기본값 설정 가능(`props={undefined}`으로 전달될 때만 사용)
@@ -286,3 +286,33 @@ export default function Profile() {
 ![alt text](readme_photos/children.png)
 - props는 페이지 렌더링마다 새로운 버전의 props 전달받음
 - props 데이터가 사용자와 상호작용할 경우, **props 자체 변경이 아닌 state를 설정해야 한다.**
+### 조건부 렌더링
+- `if`, `&&`, `?:` 연산자로 조건부 JSX 렌더링 가능
+- 아무것도 반환하지 않을 땐 `return null`이나 `&&` 활용
+- `&&` 사용 시, 조건을 숫자로 두지 않기(0으로 조건을 걸면 0=false가 아닌 0 자체로 인식하여 반환함)
+```js
+// if 사용법
+if (bool_name) {
+  return ( {/* bool_name이 True일때 출력하는 요소 */} );
+  // 반환X -> return null
+}
+return ( {/* bool_name이 False일때 출력하는 요소 */} );
+// 삼항 연산자(?:) 사용법
+return (
+  <li className="item">
+    {bool_name ? {/* bool_name이 True일때 */} : {/* bool_name이 False일때 */}}
+  </li>
+);
+// && 활용
+return (
+  <li className="item">
+    {name} {bool_name && 'bool_name=true일때 추가로 렌더링할 요소'}
+  </li>
+);
+// 변수 조건부 활용
+let content = name;
+if (bool_name) {
+  content = (<del>name</del>)
+}
+return <li>{content}</li>
+```

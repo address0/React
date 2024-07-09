@@ -3,6 +3,7 @@ import Hello from './Hello';
 import { Goodbye } from './Hello';
 import {Avatar, Card} from './Profile';
 import Profile from './Profile';
+import PackingList from './Item';
 
 function App() {
   const avatar = 'https://i.imgur.com/7vQD0fPs.jpg'
@@ -64,6 +65,7 @@ function App() {
             imageId: '1bX5QH6'
           }}/>
       </Card>
+      <PackingList />
     </div>
   );
 }
