@@ -1,25 +1,20 @@
 # :memo:Address0의 React 공부공간
 ### 2024-06-11 ~
-## 목차
-[React 정의 및 설치](#1일차-react-정의-및-설치)  
-[DOM 작성](#2일차-dom-작성)
-- [:memo:Address0의 React 공부공간](#memoaddress0의-react-공부공간)
-    - [2024-06-11 ~](#2024-06-11-)
-  - [목차](#목차)
-  - [1. React 정의 및 설치](#1-react-정의-및-설치)
-    - [:mag\_right:React란?](#mag_rightreact란)
-    - [React 설치](#react-설치)
-    - [:+1: Google 공식문서 활용 자습하기](#1-google-공식문서-활용-자습하기)
-  - [2. DOM 작성](#2-dom-작성)
-    - [컴포넌트](#컴포넌트)
-    - [스타일 추가: `className`으로 css class지정](#스타일-추가-classname으로-css-class지정)
-    - [함수 정의](#함수-정의)
-    - [import/export](#importexport)
-    - [JSX](#jsx)
-    - [Props](#props)
-    - [Props: Component 중첩](#props-component-중첩)
-    - [조건부 렌더링](#조건부-렌더링)
-    - [반복 렌더링(리스트 렌더링)](#반복-렌더링리스트-렌더링)
+## 목차  
+1. React 정의 및 설치
+  - [:mag\_right:React란?](#mag_rightreact란)
+  - [React 설치](#react-설치)
+  - [:+1: Google 공식문서 활용 자습하기](#1-google-공식문서-활용-자습하기)
+2. DOM 작성
+  - [컴포넌트](#컴포넌트)
+  - [스타일 추가](#스타일-추가-classname으로-css-class지정)
+  - [함수 정의](#함수-정의)
+  - [import/export](#importexport)
+  - [JSX](#jsx)
+  - [Props](#props)
+  - [조건부 렌더링](#조건부-렌더링)
+  - [반복 렌더링(리스트 렌더링)](#반복-렌더링리스트-렌더링)
+  - [Pure Components](#pure-components)
 ## 1. React 정의 및 설치
 ### :mag_right:React란?
 **페이스북에서 개발한 오픈소스 라이브러리**  
@@ -339,3 +334,41 @@ export default function List () {
 }  // listItems 반환
 ```
 - 반복 시 필수 요소인 key: 항상 고유한 값을 가지고, 변경 허용하지 않음(DB 항목 간 식별 기능)
+### Pure Components
+- React: 모든 components == pure 가정하고 동작함
+- React 컴포넌트 input에 대해 항상 같은 JSX 반환
+- **Side Effect**: 컴포넌트 렌더링 전 정의한 객체or변수 변경 시 발생하는 버그
+```js
+let guest = 0;
+
+function Cup() {
+  // 컴포넌트 렌더링 시 변수값 변경: 버그 발생 위험
+  guest = guest + 1;
+  return <h2>Tea cup for guest #{guest}</h2>;
+}
+
+export default function TeaSet() {
+  return (
+    <>
+      <Cup />
+      <Cup />
+      <Cup />
+    </>
+  );
+}
+```
+![alt text](readme_photos/side_effect.png)
+- 해결 방법: 렌더링 시 local에서 객체 생성하여 변경
+```js
+function Cup({ guest }) {
+  return <h2>Tea cup for guest #{guest}</h2>;
+}
+
+export default function TeaGathering() {
+  let cups = [];   // 빈 배열: cup 생성하여 push
+  for (let i = 1; i <= 12; i++) {
+    cups.push(<Cup key={i} guest={i} />);
+  }
+  return cups;
+}
+```
