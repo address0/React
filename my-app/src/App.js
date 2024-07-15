@@ -4,6 +4,7 @@ import { Goodbye } from './Hello';
 import {Avatar, Card} from './Profile';
 import Profile from './Profile';
 import PackingList from './Item';
+import Sequence from './Sequence';
 
 function App() {
   const avatar = 'https://i.imgur.com/7vQD0fPs.jpg'
@@ -21,7 +22,7 @@ function App() {
       <img
       src='https://i.imgur.com/MK3eW3Am.jpg'
       alt="Katherine Johnson"
-      class="photo"
+      className="photo"
       />
       <hr />
       <Hello />
@@ -30,7 +31,7 @@ function App() {
       <img
       src="https://i.imgur.com/yXOvdOSs.jpg"
       alt="Hedy Lamarr"
-      class="photo"
+      className="photo"
       />
       <ul>
           <li>Invent <b>new traffic lights</b></li>
@@ -66,6 +67,7 @@ function App() {
           }}/>
       </Card>
       <PackingList />
+      <Sequence />
     </div>
   );
 }

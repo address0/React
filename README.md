@@ -3,12 +3,23 @@
 ## 목차
 [React 정의 및 설치](#1일차-react-정의-및-설치)  
 [DOM 작성](#2일차-dom-작성)
-  - [컴포넌트](#컴포넌트)
-  - [스타일 추가(class)](#스타일-추가-classname으로-css-class지정)
-  - [함수 정의](#함수-정의)
-  - [export와 import](#importexport)
-  - [JSX 정리](#jsx)
-  - [Props](#props)
+- [:memo:Address0의 React 공부공간](#memoaddress0의-react-공부공간)
+    - [2024-06-11 ~](#2024-06-11-)
+  - [목차](#목차)
+  - [1. React 정의 및 설치](#1-react-정의-및-설치)
+    - [:mag\_right:React란?](#mag_rightreact란)
+    - [React 설치](#react-설치)
+    - [:+1: Google 공식문서 활용 자습하기](#1-google-공식문서-활용-자습하기)
+  - [2. DOM 작성](#2-dom-작성)
+    - [컴포넌트](#컴포넌트)
+    - [스타일 추가: `className`으로 css class지정](#스타일-추가-classname으로-css-class지정)
+    - [함수 정의](#함수-정의)
+    - [import/export](#importexport)
+    - [JSX](#jsx)
+    - [Props](#props)
+    - [Props: Component 중첩](#props-component-중첩)
+    - [조건부 렌더링](#조건부-렌더링)
+    - [반복 렌더링(리스트 렌더링)](#반복-렌더링리스트-렌더링)
 ## 1. React 정의 및 설치
 ### :mag_right:React란?
 **페이스북에서 개발한 오픈소스 라이브러리**  
@@ -316,3 +327,15 @@ if (bool_name) {
 }
 return <li>{content}</li>
 ```
+### 반복 렌더링(리스트 렌더링)
+- JS sequence 메서드 사용하여 유사한 컴포넌트 반복 표시 가능: `filter()`, `map()`
+```js
+const listname = [a, b, c, d]  // 데이터 배열 정의
+export default function List () {
+  const listItems = listname.map(item => 
+    <li key={item.id}>{item}</li>    // 반복 시 항상 key 지정
+  )  // listname의 요소들을(item) listItems에 매핑
+  return <ul>{listItems}</ul>
+}  // listItems 반환
+```
+- 반복 시 필수 요소인 key: 항상 고유한 값을 가지고, 변경 허용하지 않음(DB 항목 간 식별 기능)
